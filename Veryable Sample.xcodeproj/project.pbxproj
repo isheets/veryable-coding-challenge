@@ -9,25 +9,29 @@
 /* Begin PBXBuildFile section */
 		09F5497A5315486D756C4212 /* Pods_Veryable_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFCC6589E8234DDBAFB6174 /* Pods_Veryable_Sample.framework */; };
 		515EC6B3242E5FBA00B21DBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EC6B2242E5FBA00B21DBB /* AppDelegate.swift */; };
-		515EC6B5242E5FBA00B21DBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EC6B4242E5FBA00B21DBB /* SceneDelegate.swift */; };
 		515EC6B8242E5FBA00B21DBB /* Veryable_Sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 515EC6B6242E5FBA00B21DBB /* Veryable_Sample.xcdatamodeld */; };
-		515EC6BA242E5FBA00B21DBB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EC6B9242E5FBA00B21DBB /* ContentView.swift */; };
 		515EC6BC242E5FBC00B21DBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EC6BB242E5FBC00B21DBB /* Assets.xcassets */; };
 		515EC6BF242E5FBC00B21DBB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EC6BE242E5FBC00B21DBB /* Preview Assets.xcassets */; };
 		515EC6C2242E5FBC00B21DBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 515EC6C0242E5FBC00B21DBB /* LaunchScreen.storyboard */; };
+		51D07931242E786300912606 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07930242E786300912606 /* BaseViewController.swift */; };
+		51D07933242E787600912606 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07932242E787600912606 /* HomeViewController.swift */; };
+		51D07937242E7B1900912606 /* UIColor+Veryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07936242E7B1900912606 /* UIColor+Veryable.swift */; };
+		51D07939242E7B8C00912606 /* UIFont+Veryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07938242E7B8C00912606 /* UIFont+Veryable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0EB0BA61D6219763814275CA /* Pods-Veryable Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veryable Sample.debug.xcconfig"; path = "Target Support Files/Pods-Veryable Sample/Pods-Veryable Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		515EC6AF242E5FBA00B21DBB /* Veryable Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veryable Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EC6B2242E5FBA00B21DBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		515EC6B4242E5FBA00B21DBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		515EC6B7242E5FBA00B21DBB /* Veryable_Sample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Veryable_Sample.xcdatamodel; sourceTree = "<group>"; };
-		515EC6B9242E5FBA00B21DBB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		515EC6BB242E5FBC00B21DBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		515EC6BE242E5FBC00B21DBB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		515EC6C1242E5FBC00B21DBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		515EC6C3242E5FBC00B21DBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51D07930242E786300912606 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		51D07932242E787600912606 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		51D07936242E7B1900912606 /* UIColor+Veryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Veryable.swift"; sourceTree = "<group>"; };
+		51D07938242E7B8C00912606 /* UIFont+Veryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Veryable.swift"; sourceTree = "<group>"; };
 		B65FE61971F35C89FD901862 /* Pods-Veryable Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veryable Sample.release.xcconfig"; path = "Target Support Files/Pods-Veryable Sample/Pods-Veryable Sample.release.xcconfig"; sourceTree = "<group>"; };
 		CDFCC6589E8234DDBAFB6174 /* Pods_Veryable_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veryable_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -65,11 +69,9 @@
 		515EC6B1242E5FBA00B21DBB /* Veryable Sample */ = {
 			isa = PBXGroup;
 			children = (
-				515EC6B2242E5FBA00B21DBB /* AppDelegate.swift */,
-				515EC6B4242E5FBA00B21DBB /* SceneDelegate.swift */,
-				515EC6B9242E5FBA00B21DBB /* ContentView.swift */,
+				51D07934242E7AE000912606 /* View */,
+				51D0792F242E6CB200912606 /* Controller */,
 				515EC6BB242E5FBC00B21DBB /* Assets.xcassets */,
-				515EC6C0242E5FBC00B21DBB /* LaunchScreen.storyboard */,
 				515EC6C3242E5FBC00B21DBB /* Info.plist */,
 				515EC6B6242E5FBA00B21DBB /* Veryable_Sample.xcdatamodeld */,
 				515EC6BD242E5FBC00B21DBB /* Preview Content */,
@@ -83,6 +85,34 @@
 				515EC6BE242E5FBC00B21DBB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		51D0792F242E6CB200912606 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				515EC6B2242E5FBA00B21DBB /* AppDelegate.swift */,
+				51D07930242E786300912606 /* BaseViewController.swift */,
+				51D07932242E787600912606 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		51D07934242E7AE000912606 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				51D07935242E7AE400912606 /* Extension */,
+				515EC6C0242E5FBC00B21DBB /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		51D07935242E7AE400912606 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				51D07936242E7B1900912606 /* UIColor+Veryable.swift */,
+				51D07938242E7B8C00912606 /* UIFont+Veryable.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		5DE92AB3940F2422220C966C /* Pods */ = {
@@ -219,8 +249,10 @@
 			files = (
 				515EC6B8242E5FBA00B21DBB /* Veryable_Sample.xcdatamodeld in Sources */,
 				515EC6B3242E5FBA00B21DBB /* AppDelegate.swift in Sources */,
-				515EC6BA242E5FBA00B21DBB /* ContentView.swift in Sources */,
-				515EC6B5242E5FBA00B21DBB /* SceneDelegate.swift in Sources */,
+				51D07939242E7B8C00912606 /* UIFont+Veryable.swift in Sources */,
+				51D07931242E786300912606 /* BaseViewController.swift in Sources */,
+				51D07933242E787600912606 /* HomeViewController.swift in Sources */,
+				51D07937242E7B1900912606 /* UIColor+Veryable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
