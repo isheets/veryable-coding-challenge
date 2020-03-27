@@ -12,6 +12,7 @@ import SnapKit
 class HomeViewController: BaseViewController {
     
     var backgroundView : UIView!
+    var helloWorldText : UILabel!
     
                                       
     
@@ -31,16 +32,24 @@ class HomeViewController: BaseViewController {
         super.addSubviews()
         
         backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.vryBlue()
+        backgroundView.backgroundColor = UIColor.vryBackground()
         self.view.addSubview(backgroundView)
         
-        print(dictonary)
+        helloWorldText = UILabel()
+        helloWorldText.text = "Hello World!"
+        helloWorldText.font = UIFont.vryAvenirNextBold(12)
+        self.view.addSubview(helloWorldText)
+        
     }
     
     override func makeConstraints() {
         
         backgroundView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
+        }
+        
+        helloWorldText.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalTo(backgroundView)
         }
         
     }

@@ -17,7 +17,6 @@
 		51D07933242E787600912606 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07932242E787600912606 /* HomeViewController.swift */; };
 		51D07937242E7B1900912606 /* UIColor+Veryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07936242E7B1900912606 /* UIColor+Veryable.swift */; };
 		51D07939242E7B8C00912606 /* UIFont+Veryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07938242E7B8C00912606 /* UIFont+Veryable.swift */; };
-		51D0793C242E852A00912606 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D0793B242E852A00912606 /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		51D07932242E787600912606 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		51D07936242E7B1900912606 /* UIColor+Veryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Veryable.swift"; sourceTree = "<group>"; };
 		51D07938242E7B8C00912606 /* UIFont+Veryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Veryable.swift"; sourceTree = "<group>"; };
-		51D0793B242E852A00912606 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		B65FE61971F35C89FD901862 /* Pods-Veryable Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veryable Sample.release.xcconfig"; path = "Target Support Files/Pods-Veryable Sample/Pods-Veryable Sample.release.xcconfig"; sourceTree = "<group>"; };
 		CDFCC6589E8234DDBAFB6174 /* Pods_Veryable_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veryable_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -71,7 +69,6 @@
 		515EC6B1242E5FBA00B21DBB /* Veryable Sample */ = {
 			isa = PBXGroup;
 			children = (
-				51D0793A242E850700912606 /* Model */,
 				51D07934242E7AE000912606 /* View */,
 				51D0792F242E6CB200912606 /* Controller */,
 				515EC6BB242E5FBC00B21DBB /* Assets.xcassets */,
@@ -116,14 +113,6 @@
 				51D07938242E7B8C00912606 /* UIFont+Veryable.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		51D0793A242E850700912606 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				51D0793B242E852A00912606 /* Data.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		5DE92AB3940F2422220C966C /* Pods */ = {
@@ -258,7 +247,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51D0793C242E852A00912606 /* Data.swift in Sources */,
 				515EC6B8242E5FBA00B21DBB /* Veryable_Sample.xcdatamodeld in Sources */,
 				515EC6B3242E5FBA00B21DBB /* AppDelegate.swift in Sources */,
 				51D07939242E7B8C00912606 /* UIFont+Veryable.swift in Sources */,
