@@ -13,6 +13,8 @@ class HomeViewController: BaseViewController {
     
     var backgroundView : UIView!
     
+                                      
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,8 @@ class HomeViewController: BaseViewController {
         backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.vryBlue()
         self.view.addSubview(backgroundView)
+        
+        print(dictonary)
     }
     
     override func makeConstraints() {
