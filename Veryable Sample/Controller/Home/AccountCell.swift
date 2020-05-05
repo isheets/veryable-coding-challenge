@@ -28,34 +28,52 @@ public class AccountCell: UITableViewCell {
         accountDescLabel.translatesAutoresizingMaskIntoConstraints = false
         accountTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        //setup stackview for easier layout
+        //RESIZE image here
+        //accountImage.frame = CGSize(width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+        accountImage.contentMode = .scaleAspectFit
+        
+        //setup stackviews for easier layout
         let textStackView = UIStackView(arrangedSubviews: [accountNameLabel, accountTypeLabel, accountDescLabel])
         textStackView.axis = .vertical
         textStackView.distribution = .equalSpacing
         textStackView.alignment = .fill
-        textStackView.spacing = 8
+        textStackView.spacing = 4
         textStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let layoutStackView = UIStackView(arrangedSubviews: [accountImage, textStackView])
+        layoutStackView.axis = .horizontal
+        layoutStackView.distribution = .equalSpacing
+        layoutStackView.alignment = .fill
+        layoutStackView.spacing = 8
+        layoutStackView.translatesAutoresizingMaskIntoConstraints = false
         
         //set background colors
         contentView.backgroundColor = UIColor.vryBackground()
         background.backgroundColor = UIColor.white
         
+        //add shadow
+        background.layer.shadowColor = UIColor.vryGrey().cgColor
+        background.layer.shadowOpacity = 0.5
+        background.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        background.layer.shadowRadius = 2
+        background.layer.cornerRadius = 3
+        
         //add to content view
-        background.addSubview(textStackView)
+        background.addSubview(layoutStackView)
         contentView.addSubview(background)
         
         //set constraints
         let cellMargins = contentView.layoutMarginsGuide
         background.leadingAnchor.constraint(equalTo: cellMargins.leadingAnchor, constant: 4).isActive = true
-        background.trailingAnchor.constraint(equalTo: cellMargins.trailingAnchor, constant: 4).isActive = true
-        background.topAnchor.constraint(equalTo: cellMargins.topAnchor, constant: 8).isActive = true
-        background.bottomAnchor.constraint(equalTo: cellMargins.bottomAnchor, constant: 0).isActive = true
+        background.trailingAnchor.constraint(equalTo: cellMargins.trailingAnchor, constant: -4).isActive = true
+        background.topAnchor.constraint(equalTo: cellMargins.topAnchor, constant: 4).isActive = true
+        background.bottomAnchor.constraint(equalTo: cellMargins.bottomAnchor).isActive = true
         
         let backgroundMargins = background.layoutMarginsGuide
-        textStackView.leadingAnchor.constraint(equalTo: backgroundMargins.leadingAnchor).isActive = true
-        textStackView.trailingAnchor.constraint(equalTo: backgroundMargins.trailingAnchor).isActive = true
-        textStackView.topAnchor.constraint(equalTo: backgroundMargins.topAnchor).isActive = true
-        textStackView.bottomAnchor.constraint(equalTo: backgroundMargins.bottomAnchor).isActive = true
+        layoutStackView.leadingAnchor.constraint(equalTo: backgroundMargins.leadingAnchor, constant: 4).isActive = true
+        layoutStackView.trailingAnchor.constraint(equalTo: backgroundMargins.trailingAnchor, constant: -4).isActive = true
+        layoutStackView.topAnchor.constraint(equalTo: backgroundMargins.topAnchor, constant: 8).isActive = true
+        layoutStackView.bottomAnchor.constraint(equalTo: backgroundMargins.bottomAnchor, constant: -8).isActive = true
         
         
     }
@@ -65,9 +83,24 @@ public class AccountCell: UITableViewCell {
     }
     
     public override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        // Configure the view for the selected state (animate shadow opacity)
+        if selected {
+            let animation = CABasicAnimation(keyPath: "shadowOpacity")
+            animation.fromValue = background.layer.shadowOpacity
+            animation.toValue = 0.0
+            animation.duration = 0.1
+            background.layer.add(animation, forKey: animation.keyPath)
+            background.layer.shadowOpacity = 0.0
+        } else {
+            let animation = CABasicAnimation(keyPath: "shadowOpacity")
+            animation.fromValue = background.layer.shadowOpacity
+            animation.toValue = 0.5
+            animation.duration = 0.1
+            background.layer.add(animation, forKey: animation.keyPath)
+            background.layer.shadowOpacity = 0.5
+        }
+        
     }
     
     func fillData(with: Account) {

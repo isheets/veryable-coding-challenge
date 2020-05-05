@@ -41,11 +41,12 @@ class HomeViewController: BaseViewController {
         
         //set up table view
         accountTableView = UITableView()
-        
         accountTableView.delegate = tableViewDataSourceDelegateProvider
         accountTableView.dataSource = tableViewDataSourceDelegateProvider
         accountTableView.register(AccountCell.self, forCellReuseIdentifier: Constants.AccountCellId)
-        
+        accountTableView.tableFooterView = UIView() //remove empty cells from bottom
+        accountTableView.backgroundColor = UIColor.vryBackground()
+        accountTableView.separatorStyle = .none
         self.view.addSubview(accountTableView)
         
     }
