@@ -11,12 +11,13 @@ import SnapKit
 
 class HomeViewController: BaseViewController {
 
-
+    //views
     var backgroundView : UIView!
     var accountTableView : UITableView!
     
-    
-    let accountCellId = "accountCellId"
+    //datasource and delegate form TableView
+    private var tableViewDataManager = TableViewDataManager()
+    private lazy var tableViewDataSourceDelegateProvider = TableViewDataSourceDelegateProvider(dataManager: tableViewDataManager)
                                       
     
     override func viewDidLoad() {
@@ -38,10 +39,13 @@ class HomeViewController: BaseViewController {
         backgroundView.backgroundColor = UIColor.vryBackground()
         self.view.addSubview(backgroundView)
         
+        //set up table view
         accountTableView = UITableView()
-        accountTableView.delegate = self
-        accountTableView.dataSource = self
-        accountTableView.register(UITableViewCell.self, forCellReuseIdentifier: accountCellId)
+        
+        accountTableView.delegate = tableViewDataSourceDelegateProvider
+        accountTableView.dataSource = tableViewDataSourceDelegateProvider
+        accountTableView.register(AccountCell.self, forCellReuseIdentifier: Constants.AccountCellId)
+        
         self.view.addSubview(accountTableView)
         
     }
@@ -57,16 +61,6 @@ class HomeViewController: BaseViewController {
         }
         
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: accountCellId, for: indexPath)
-        cell.textLabel?.text = "Test \(indexPath.row)"
-        
-        return cell
-    }
+
     
 }
