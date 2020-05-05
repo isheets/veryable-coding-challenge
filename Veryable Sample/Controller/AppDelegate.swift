@@ -21,8 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeViewController = HomeViewController()
         homeViewController.modalTransitionStyle = .crossDissolve
         
+        let navController = UINavigationController()
+        navController.viewControllers = [homeViewController]
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = homeViewController
+        self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()
         
        

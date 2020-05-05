@@ -10,16 +10,19 @@ import UIKit
 import SnapKit
 
 class HomeViewController: BaseViewController {
-    
+
+
     var backgroundView : UIView!
-    var helloWorldText : UILabel!
+    var accountTableView : UITableView!
     
+    
+    let accountCellId = "accountCellId"
                                       
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        self.title = "ACCOUNTS"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,10 +38,11 @@ class HomeViewController: BaseViewController {
         backgroundView.backgroundColor = UIColor.vryBackground()
         self.view.addSubview(backgroundView)
         
-        helloWorldText = UILabel()
-        helloWorldText.text = "Hello World!"
-        helloWorldText.font = UIFont.vryAvenirNextBold(12)
-        self.view.addSubview(helloWorldText)
+        accountTableView = UITableView()
+        accountTableView.delegate = self
+        accountTableView.dataSource = self
+        accountTableView.register(UITableViewCell.self, forCellReuseIdentifier: accountCellId)
+        self.view.addSubview(accountTableView)
         
     }
     
@@ -48,9 +52,21 @@ class HomeViewController: BaseViewController {
             make.edges.equalTo(self.view)
         }
         
-        helloWorldText.snp.makeConstraints { (make) in
-            make.centerX.centerY.equalTo(backgroundView)
+        accountTableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(backgroundView)
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: accountCellId, for: indexPath)
+        cell.textLabel?.text = "Test \(indexPath.row)"
+        
+        return cell
+    }
+    
 }
