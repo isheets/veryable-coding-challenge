@@ -10,4 +10,7 @@ import Foundation
 
 public struct Constants {
     static let AccountCellId = "AccountCellId"
+    
+    static let CARD = "card"
+    static let BANK = "bank"
 }

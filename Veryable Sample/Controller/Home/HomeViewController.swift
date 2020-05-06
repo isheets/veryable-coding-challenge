@@ -41,7 +41,7 @@ class HomeViewController: BaseViewController {
         accountTableView.dataSource = tableViewDataSourceDelegateProvider
         accountTableView.register(AccountCell.self, forCellReuseIdentifier: Constants.AccountCellId)
         
-        let header = UITableViewHeaderFooterView()
+        let header = UIView()
         header.backgroundColor = UIColor.vryBackground()
         header.frame = CGRect(x: 0, y: 0, width: accountTableView.frame.width, height: 16)
         accountTableView.tableHeaderView = header //add space to top

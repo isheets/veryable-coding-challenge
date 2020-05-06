@@ -33,15 +33,11 @@ class TableViewDataSourceDelegateProvider: NSObject, UITableViewDataSource, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.AccountCellId, for: indexPath) as! AccountCell
         
         let account = dataManager.accounts[indexPath.row]
-        
-        cell.accountNameLabel.text = account.account_name
-        cell.accountTypeLabel.text = account.account_type
-        cell.accountDescLabel.text = account.desc
-        
-        let image = UIImage(named: "bank")?.withTintColor(UIColor.vryBlue())
-        
-        cell.accountImage.image = image
-        
+        do {
+            try cell.fillData(account: account)
+        } catch {
+            print("Error filling account cell: \(error)")
+        }
         
         return cell
     }
