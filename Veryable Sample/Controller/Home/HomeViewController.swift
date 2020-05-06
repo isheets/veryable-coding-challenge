@@ -35,15 +35,17 @@ class HomeViewController: BaseViewController {
     override func addSubviews() {
         super.addSubviews()
         
-        backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.vryBackground()
-        self.view.addSubview(backgroundView)
-        
         //set up table view
         accountTableView = UITableView()
         accountTableView.delegate = tableViewDataSourceDelegateProvider
         accountTableView.dataSource = tableViewDataSourceDelegateProvider
         accountTableView.register(AccountCell.self, forCellReuseIdentifier: Constants.AccountCellId)
+        
+        let header = UITableViewHeaderFooterView()
+        header.backgroundColor = UIColor.vryBackground()
+        header.frame = CGRect(x: 0, y: 0, width: accountTableView.frame.width, height: 16)
+        accountTableView.tableHeaderView = header //add space to top
+        
         accountTableView.tableFooterView = UIView() //remove empty cells from bottom
         accountTableView.backgroundColor = UIColor.vryBackground()
         accountTableView.separatorStyle = .none
@@ -53,14 +55,9 @@ class HomeViewController: BaseViewController {
     
     override func makeConstraints() {
         
-        backgroundView.snp.makeConstraints { (make) in
+        accountTableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
-        
-        accountTableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(backgroundView)
-        }
-        
     }
 
     

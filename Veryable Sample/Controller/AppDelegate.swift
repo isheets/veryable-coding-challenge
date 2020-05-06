@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navController = UINavigationController()
         navController.viewControllers = [homeViewController]
+        navController.navigationBar.titleTextAttributes = [.font: UIFont.vryAvenirNextRegular(20)!]
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navController

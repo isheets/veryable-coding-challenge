@@ -37,7 +37,11 @@ class TableViewDataSourceDelegateProvider: NSObject, UITableViewDataSource, UITa
         cell.accountNameLabel.text = account.account_name
         cell.accountTypeLabel.text = account.account_type
         cell.accountDescLabel.text = account.desc
-        cell.accountImage.image = UIImage(named: "bank")
+        
+        let image = UIImage(named: "bank")?.withTintColor(UIColor.vryBlue())
+        
+        cell.accountImage.image = image
+        
         
         return cell
     }

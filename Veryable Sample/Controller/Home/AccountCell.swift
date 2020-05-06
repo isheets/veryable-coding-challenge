@@ -11,41 +11,44 @@ import UIKit
 public class AccountCell: UITableViewCell {
     
     private let background = UIView()
-    public let accountImage = UIImageView()
+    public let accountImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
     public let accountNameLabel = UILabel()
     public let accountDescLabel = UILabel()
     public let accountTypeLabel = UILabel()
+    private let imageContainer = UIView()
     
     
     //configure custom cell
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        //set to false in order to use auto layout
         background.translatesAutoresizingMaskIntoConstraints = false
-        accountImage.translatesAutoresizingMaskIntoConstraints = false
-        accountNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        accountDescLabel.translatesAutoresizingMaskIntoConstraints = false
-        accountTypeLabel.translatesAutoresizingMaskIntoConstraints = false
+        imageContainer.translatesAutoresizingMaskIntoConstraints = false
         
-        //RESIZE image here
-        //accountImage.frame = CGSize(width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+        accountImage.translatesAutoresizingMaskIntoConstraints = false
         accountImage.contentMode = .scaleAspectFit
+        accountImage.frame.size.height = 20
+        accountImage.frame.size.width = 20
+        
+        accountNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        accountNameLabel.font = UIFont.vryAvenirNextDemiBold(14)
+        accountNameLabel.textColor = UIColor.vryGreyDark()
+        
+        accountDescLabel.translatesAutoresizingMaskIntoConstraints = false
+        accountDescLabel.font = UIFont.vryAvenirNextRegular(12)
+        accountDescLabel.textColor = UIColor.vryGreyDark()
+        
+        accountTypeLabel.translatesAutoresizingMaskIntoConstraints = false
+        accountTypeLabel.font = UIFont.vryAvenirNextRegular(12)
+        accountTypeLabel.textColor = UIColor.vryGrey()
         
         //setup stackviews for easier layout
-        let textStackView = UIStackView(arrangedSubviews: [accountNameLabel, accountTypeLabel, accountDescLabel])
+        let textStackView = UIStackView(arrangedSubviews: [accountNameLabel, accountDescLabel, accountTypeLabel])
         textStackView.axis = .vertical
         textStackView.distribution = .equalSpacing
         textStackView.alignment = .fill
-        textStackView.spacing = 4
+        textStackView.spacing = 2
         textStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let layoutStackView = UIStackView(arrangedSubviews: [accountImage, textStackView])
-        layoutStackView.axis = .horizontal
-        layoutStackView.distribution = .equalSpacing
-        layoutStackView.alignment = .fill
-        layoutStackView.spacing = 8
-        layoutStackView.translatesAutoresizingMaskIntoConstraints = false
         
         //set background colors
         contentView.backgroundColor = UIColor.vryBackground()
@@ -59,22 +62,29 @@ public class AccountCell: UITableViewCell {
         background.layer.cornerRadius = 3
         
         //add to content view
-        background.addSubview(layoutStackView)
+        background.addSubview(accountImage)
+        background.addSubview(textStackView)
         contentView.addSubview(background)
         
-        //set constraints
+        //set constraints for background
         let cellMargins = contentView.layoutMarginsGuide
-        background.leadingAnchor.constraint(equalTo: cellMargins.leadingAnchor, constant: 4).isActive = true
+        background.leadingAnchor.constraint(equalTo: cellMargins.leadingAnchor, constant:  4).isActive = true
         background.trailingAnchor.constraint(equalTo: cellMargins.trailingAnchor, constant: -4).isActive = true
-        background.topAnchor.constraint(equalTo: cellMargins.topAnchor, constant: 4).isActive = true
+        background.topAnchor.constraint(equalTo: cellMargins.topAnchor, constant: -8).isActive = true
         background.bottomAnchor.constraint(equalTo: cellMargins.bottomAnchor).isActive = true
         
+        //constraints for views
         let backgroundMargins = background.layoutMarginsGuide
-        layoutStackView.leadingAnchor.constraint(equalTo: backgroundMargins.leadingAnchor, constant: 4).isActive = true
-        layoutStackView.trailingAnchor.constraint(equalTo: backgroundMargins.trailingAnchor, constant: -4).isActive = true
-        layoutStackView.topAnchor.constraint(equalTo: backgroundMargins.topAnchor, constant: 8).isActive = true
-        layoutStackView.bottomAnchor.constraint(equalTo: backgroundMargins.bottomAnchor, constant: -8).isActive = true
         
+        textStackView.leadingAnchor.constraint(equalTo: accountImage.trailingAnchor, constant: 12).isActive = true
+        textStackView.trailingAnchor.constraint(equalTo: backgroundMargins.trailingAnchor, constant: -8).isActive = true
+        textStackView.topAnchor.constraint(equalTo: backgroundMargins.topAnchor, constant: 8).isActive = true
+        textStackView.bottomAnchor.constraint(equalTo: backgroundMargins.bottomAnchor, constant: -8).isActive = true
+        
+        accountImage.widthAnchor.constraint(equalToConstant: 15).isActive = true
+        accountImage.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        accountImage.leadingAnchor.constraint(equalTo: backgroundMargins.leadingAnchor, constant: 8).isActive = true
+        accountImage.topAnchor.constraint(equalTo: backgroundMargins.topAnchor, constant: 10).isActive = true
         
     }
     
