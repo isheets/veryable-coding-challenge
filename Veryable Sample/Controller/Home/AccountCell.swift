@@ -12,7 +12,7 @@ public class AccountCell: UITableViewCell {
     
     private let background = UIView()
     private let textStackView = UIStackView()
-    private let accountImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+    private let accountImageView = UIImageView()
     private let accountNameLabel = UILabel()
     private let accountDescLabel = UILabel()
     private let accountTypeLabel = UILabel()
@@ -85,10 +85,9 @@ public class AccountCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //selection state
     private let selectAnimation = CABasicAnimation(keyPath: "shadowRadius")
-    
     public override func setSelected(_ selected: Bool, animated: Bool) {
-
         // Configure the view for the selected state (animate shadow radius)
         if selected {
             selectAnimation.fromValue = background.layer.shadowRadius
@@ -103,7 +102,6 @@ public class AccountCell: UITableViewCell {
             background.layer.add(selectAnimation, forKey: selectAnimation.keyPath)
             background.layer.shadowRadius = 2
         }
-        
     }
     
     
@@ -130,8 +128,8 @@ public class AccountCell: UITableViewCell {
         accountImageView.topAnchor.constraint(equalTo: backgroundMargins.topAnchor, constant: 10).isActive = true
         
         arrowImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        arrowImageView.trailingAnchor.constraint(equalTo: backgroundMargins.trailingAnchor, constant: 12).isActive = true
-        arrowImageView.topAnchor.constraint(equalTo: backgroundMargins.topAnchor, constant: 8).isActive = true
+        arrowImageView.trailingAnchor.constraint(equalTo: backgroundMargins.trailingAnchor).isActive = true
+        arrowImageView.centerYAnchor.constraint(equalTo: backgroundMargins.centerYAnchor).isActive = true
     }
     
     //set the content for the cell's data views given an Account
