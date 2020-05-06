@@ -17,19 +17,15 @@ class HomeViewController: BaseViewController {
     
     //datasource and delegate form TableView
     private var tableViewDataManager = TableViewDataManager()
-    private lazy var tableViewDataSourceDelegateProvider = TableViewDataSourceDelegateProvider(dataManager: tableViewDataManager)
-                                      
+    private lazy var tableViewDataSourceDelegateProvider = TableViewDataSourceDelegateProvider(dataManager: tableViewDataManager, navController: self.navigationController)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "ACCOUNTS"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-            
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "ACCOUNTS"
     }
     
     override func addSubviews() {
@@ -59,6 +55,5 @@ class HomeViewController: BaseViewController {
             make.edges.equalTo(self.view)
         }
     }
-
     
 }

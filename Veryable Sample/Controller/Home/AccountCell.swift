@@ -76,6 +76,7 @@ public class AccountCell: UITableViewCell {
 
         contentView.addSubview(background)
         
+        
         //add auto layout constraints
         constrainView()
         
@@ -133,19 +134,11 @@ public class AccountCell: UITableViewCell {
     }
     
     //set the content for the cell's data views given an Account
-    func fillData(account: Account) throws {
+    func fillData(account: Account) {
         accountNameLabel.text = account.account_name
         accountDescLabel.text = account.desc
-        
-        if account.account_type == Constants.CARD {
-            accountImageView.image = cardImage
-            accountTypeLabel.text = "Card: Instant"
-        } else if account.account_type == Constants.BANK {
-            accountImageView.image = bankImage
-            accountTypeLabel.text = "Bank Account: ACH - Same Day"
-        } else {
-            throw VError.unkownValue(desc: "did not recognize account type")
-        }
+        accountImageView.image = account.image
+        accountTypeLabel.text = account.account_type
     }
 
 }

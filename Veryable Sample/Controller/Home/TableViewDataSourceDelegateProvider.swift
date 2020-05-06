@@ -11,9 +11,11 @@ import UIKit
 class TableViewDataSourceDelegateProvider: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     private let dataManager: TableViewDataManager
+    private let navController: UINavigationController?
     
-    init(dataManager: TableViewDataManager) {
+    init(dataManager: TableViewDataManager, navController: UINavigationController?) {
         self.dataManager = dataManager
+        self.navController = navController
         super.init()
     }
     
@@ -33,13 +35,22 @@ class TableViewDataSourceDelegateProvider: NSObject, UITableViewDataSource, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.AccountCellId, for: indexPath) as! AccountCell
         
         let account = dataManager.accounts[indexPath.row]
-        do {
-            try cell.fillData(account: account)
-        } catch {
-            print("Error filling account cell: \(error)")
-        }
+        cell.fillData(account: account)
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedAccount = dataManager.accounts[indexPath.row]
+        
+        let detailVC = AccountDetailViewController()
+        detailVC.curAccount = selectedAccount
+        
+        if let validNavController = navController {
+            validNavController.pushViewController(detailVC, animated: true)
+        }
+    }
+    
+    
 
 }

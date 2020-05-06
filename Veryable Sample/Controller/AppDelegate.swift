@@ -21,9 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeViewController = HomeViewController()
         homeViewController.modalTransitionStyle = .crossDissolve
         
-        let navController = UINavigationController()
-        navController.viewControllers = [homeViewController]
-        navController.navigationBar.titleTextAttributes = [.font: UIFont.vryAvenirNextRegular(20)!]
+        let navController = UINavigationController(rootViewController: homeViewController)
+        navController.navigationBar.titleTextAttributes = [.font: UIFont.vryAvenirNextRegular(20)!,
+                                                           .foregroundColor: UIColor.vryGreyDark()]
+        navController.navigationBar.tintColor = UIColor.vryGreyDark()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navController
