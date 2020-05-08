@@ -77,6 +77,8 @@ class DetailView: UIView {
             doneButton.bottomAnchor.constraint(equalTo: viewMargins.bottomAnchor, constant: -8).isActive = true
             doneButton.trailingAnchor.constraint(equalTo: viewMargins.trailingAnchor, constant: -8).isActive = true
             doneButton.leadingAnchor.constraint(equalTo: viewMargins.leadingAnchor, constant: 8).isActive = true
+        
+            setupConstraints = false
         }
 
         super.updateConstraints()

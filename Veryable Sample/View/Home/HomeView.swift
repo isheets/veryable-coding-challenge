@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeView: UIView {
 
     var accountTableView : UITableView!
+    var loadingIndicator = UIActivityIndicatorView(style: .large)
     
+    //flag to ensure we don't duplicate constraints
     private var setupConstraints = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         accountTableView = UITableView()
+        
+        loadingIndicator.startAnimating()
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.color = UIColor.vryBlue()
 
         
         let header = UIView()
@@ -30,6 +37,7 @@ class HomeView: UIView {
         accountTableView.separatorStyle = .none
         
         self.addSubview(accountTableView)
+        self.addSubview(loadingIndicator)
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +49,13 @@ class HomeView: UIView {
             accountTableView.snp.makeConstraints { (make) in
                 make.edges.equalTo(self)
             }
+            
+            loadingIndicator.snp.makeConstraints{ (make) in
+                make.centerWithinMargins.equalTo(self)
+            }
+            setupConstraints = false
         }
+        
         super.updateConstraints()
     }
 

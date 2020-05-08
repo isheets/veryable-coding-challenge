@@ -122,8 +122,6 @@ class AccountCellView: UITableViewCell {
         arrowImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         arrowImageView.trailingAnchor.constraint(equalTo: backgroundMargins.trailingAnchor).isActive = true
         arrowImageView.centerYAnchor.constraint(equalTo: backgroundMargins.centerYAnchor).isActive = true
-        
-        super.updateConstraints()
     }
     
     //set the content for the cell's data views given an Account

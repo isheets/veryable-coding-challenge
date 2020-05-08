@@ -12,7 +12,7 @@ import SnapKit
 class HomeViewController: BaseViewController, DataModelDelegate {
     
     var homeView : HomeView!
-    private var loadingIndicator = UIActivityIndicatorView(style: .large)
+
     
     private var tableViewDataSourceDelegateProvider: TableViewDataSourceDelegateProvider?
     private var accountNetwork: AccountNetwork?
@@ -25,15 +25,12 @@ class HomeViewController: BaseViewController, DataModelDelegate {
         
         homeView = HomeView(frame: CGRect.zero)
         
-        loadingIndicator.startAnimating()
-        loadingIndicator.hidesWhenStopped = true
-        
         
         super.viewDidLoad()
     }
     
     func didRecieveDataUpdate(data: [Account]) {
-        loadingIndicator.stopAnimating()
+        homeView.loadingIndicator.stopAnimating()
         
         tableViewDataSourceDelegateProvider = TableViewDataSourceDelegateProvider(accounts: data, navController: self.navigationController)
         homeView.accountTableView.delegate = tableViewDataSourceDelegateProvider
@@ -55,16 +52,11 @@ class HomeViewController: BaseViewController, DataModelDelegate {
     override func addSubviews() {
         super.addSubviews()
         self.view.addSubview(homeView)
-        self.view.addSubview(loadingIndicator)
     }
     
     override func makeConstraints() {
         homeView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
-        }
-        
-        loadingIndicator.snp.makeConstraints{ (make) in
-            make.centerWithinMargins.equalTo(self.view)
         }
     }
     
