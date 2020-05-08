@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import Network
 
 //used to decode response
 private struct AccountJSON: Decodable {
@@ -19,27 +20,44 @@ private struct AccountJSON: Decodable {
 
 class AccountNetwork {
     weak var delegate: DataModelDelegate?
+    let monitor = NWPathMonitor()
+    var isConnected = false
     
     init(delegate: DataModelDelegate) {
         self.delegate = delegate
+        
+        monitor.pathUpdateHandler = { path in
+            self.isConnected = path.status == .satisfied
+        }
+        
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
     }
     
-    func fetchAccounts() {
-        let request = AF.request("https://veryable-public-assets.s3.us-east-2.amazonaws.com/veryable.json")
-        
-        request.responseDecodable(of: [AccountJSON].self) { (response) in
-            guard let allAccounts = response.value else { return }
+    func fetchAccounts() throws {
+        if(isConnected){
+            let request = AF.request(Constants.JsonHost)
             
-            var accountData = [Account]()
-            for accountJSON in allAccounts {
-                accountData.append(Account(id: accountJSON.id,
-                                           account_type: accountJSON.account_type,
-                                           account_name: accountJSON.account_name,
-                                           desc: accountJSON.desc)
+            
+            request.responseDecodable(of: [AccountJSON].self) { (response) in
+                guard let allAccounts = response.value else { self.delegate?.failedDataUpdate()
+                    return
+                }
                 
-                )
+                var accountData = [Account]()
+                for accountJSON in allAccounts {
+                    accountData.append(Account(id: accountJSON.id,
+                                               account_type: accountJSON.account_type,
+                                               account_name: accountJSON.account_name,
+                                               desc: accountJSON.desc)
+                        
+                    )
+                }
+                self.delegate?.didRecieveDataUpdate(data: accountData)
             }
-            self.delegate?.didRecieveDataUpdate(data: accountData)
+            
+        } else {
+            throw VError.NoConnection
         }
     }
 }

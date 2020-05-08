@@ -9,5 +9,7 @@
 import Foundation
 
 public enum VError:Error {
-    case unkownValue(desc: String)
+    case UnkownValue(desc: String)
+    case NoConnection
+    case ParsingError
 }

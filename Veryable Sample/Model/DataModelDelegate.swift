@@ -11,4 +11,5 @@ import Foundation
 
 protocol DataModelDelegate: class {
     func didRecieveDataUpdate(data: [Account])
+    func failedDataUpdate()
 }

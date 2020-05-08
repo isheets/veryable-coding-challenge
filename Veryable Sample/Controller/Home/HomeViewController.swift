@@ -12,21 +12,42 @@ import SnapKit
 class HomeViewController: BaseViewController, DataModelDelegate {
     
     var homeView : HomeView!
-
+    
     
     private var tableViewDataSourceDelegateProvider: TableViewDataSourceDelegateProvider?
     private var accountNetwork: AccountNetwork?
     
     
     override func viewDidLoad() {
-        
-        accountNetwork = AccountNetwork(delegate: self)
-        accountNetwork?.fetchAccounts()
-        
         homeView = HomeView(frame: CGRect.zero)
         
+        accountNetwork = AccountNetwork(delegate: self)
+        fetchData()
         
         super.viewDidLoad()
+    }
+    
+    override func fetchData() {
+        do {
+            try accountNetwork?.fetchAccounts()
+        } catch {
+            print(error)
+            failedDataUpdate()
+        }
+    }
+    
+    func failedDataUpdate() {
+        let alert = UIAlertController(title: "Could not load accounts", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { action in
+            self.fetchData()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            self.homeView.loadingIndicator.stopAnimating()
+        }))
+        
+        self.present(alert, animated: true)
     }
     
     func didRecieveDataUpdate(data: [Account]) {
