@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-
+import Network
 
 //used to decode response
 private struct AccountJSON: Decodable {
@@ -20,16 +20,14 @@ private struct AccountJSON: Decodable {
 
 class AccountNetwork {
     weak var delegate: DataModelDelegate?
-    private var networkHelper = NetworkHelper()
     
     init(delegate: DataModelDelegate) {
         self.delegate = delegate
     }
     
     func fetchAccounts() throws {
-        if(networkHelper.isConnected){
+        if(NetworkHelper.shared.isConnected){
             let request = AF.request(Constants.JsonHost)
-            
             
             request.responseDecodable(of: [AccountJSON].self) { (response) in
                 guard let allAccounts = response.value else { self.delegate?.failedDataUpdate()

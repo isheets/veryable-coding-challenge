@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //start checking for network connection since app data is dependent on status
+        print(NetworkHelper.shared.isConnected)
                
         let homeViewController = HomeViewController()
         homeViewController.modalTransitionStyle = .crossDissolve

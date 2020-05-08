@@ -10,15 +10,17 @@ import Foundation
 import Network
 
 class NetworkHelper {
-    private let monitor = NWPathMonitor()
+    
+    static let shared = NetworkHelper()
+    
+    let monitor = NWPathMonitor()
     var isConnected = false
     
     init() {
         monitor.pathUpdateHandler = { path in
             self.isConnected = path.status == .satisfied
         }
-        
-        let queue = DispatchQueue(label: "NetworkMonitor")
-        monitor.start(queue: queue)
+        monitor.start(queue: DispatchQueue(label: "Monitor"))
     }
+    
 }
