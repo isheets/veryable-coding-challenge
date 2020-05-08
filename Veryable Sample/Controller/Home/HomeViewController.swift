@@ -21,7 +21,7 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         
         homeView = HomeView(frame: CGRect.zero)
-        
+
         homeView.accountTableView.delegate = tableViewDataSourceDelegateProvider
         homeView.accountTableView.dataSource = tableViewDataSourceDelegateProvider
         homeView.accountTableView.register(AccountCellView.self, forCellReuseIdentifier: Constants.AccountCellId)

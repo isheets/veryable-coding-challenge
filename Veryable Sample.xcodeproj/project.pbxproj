@@ -123,11 +123,10 @@
 		51D07934242E7AE000912606 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6A199A432465F3D300EDDDE6 /* Detail */,
+				6A199A422465F3C800EDDDE6 /* Home */,
 				51D07935242E7AE400912606 /* Extension */,
 				515EC6C0242E5FBC00B21DBB /* LaunchScreen.storyboard */,
-				6AE070042465E1FE002F7579 /* HomeView.swift */,
-				6AE070062465E23F002F7579 /* DetailView.swift */,
-				6AE070082465E3B6002F7579 /* AccountCellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,6 +155,23 @@
 				6A0FDCC0246343EB00CC4834 /* AccountDetailViewController.swift */,
 			);
 			path = "Account Detail";
+			sourceTree = "<group>";
+		};
+		6A199A422465F3C800EDDDE6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6AE070042465E1FE002F7579 /* HomeView.swift */,
+				6AE070082465E3B6002F7579 /* AccountCellView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6A199A432465F3D300EDDDE6 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6AE070062465E23F002F7579 /* DetailView.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		6AB63FCC2461F6A6007442C3 /* Home */ = {
