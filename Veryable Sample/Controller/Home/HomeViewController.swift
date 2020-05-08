@@ -24,7 +24,7 @@ class HomeViewController: BaseViewController {
         
         homeView.accountTableView.delegate = tableViewDataSourceDelegateProvider
         homeView.accountTableView.dataSource = tableViewDataSourceDelegateProvider
-        homeView.accountTableView.register(AccountCell.self, forCellReuseIdentifier: Constants.AccountCellId)
+        homeView.accountTableView.register(AccountCellView.self, forCellReuseIdentifier: Constants.AccountCellId)
         
         super.viewDidLoad()
     }
@@ -32,6 +32,11 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "ACCOUNTS"
+        
+        //clear selection when user returns from details
+        if let indexPath = homeView.accountTableView.indexPathForSelectedRow {
+            homeView.accountTableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     override func addSubviews() {

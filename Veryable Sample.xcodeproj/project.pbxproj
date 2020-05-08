@@ -21,7 +21,6 @@
 		6AB63FCE2461FD50007442C3 /* TableViewDataSourceDelegateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB63FCD2461FD50007442C3 /* TableViewDataSourceDelegateProvider.swift */; };
 		6AB63FD02461FD8E007442C3 /* TableViewDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB63FCF2461FD8E007442C3 /* TableViewDataManager.swift */; };
 		6AB63FD32461FDCD007442C3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB63FD22461FDCD007442C3 /* Account.swift */; };
-		6AB63FD52461FDFB007442C3 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB63FD42461FDFB007442C3 /* AccountCell.swift */; };
 		6AB63FD72462053F007442C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB63FD62462053F007442C3 /* Constants.swift */; };
 		6AB63FDD2462976B007442C3 /* VError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB63FDC2462976B007442C3 /* VError.swift */; };
 		6AE070012465E09F002F7579 /* AccountNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE070002465E09F002F7579 /* AccountNetwork.swift */; };
@@ -47,7 +46,6 @@
 		6AB63FCD2461FD50007442C3 /* TableViewDataSourceDelegateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSourceDelegateProvider.swift; sourceTree = "<group>"; };
 		6AB63FCF2461FD8E007442C3 /* TableViewDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataManager.swift; sourceTree = "<group>"; };
 		6AB63FD22461FDCD007442C3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		6AB63FD42461FDFB007442C3 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		6AB63FD62462053F007442C3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6AB63FDC2462976B007442C3 /* VError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VError.swift; sourceTree = "<group>"; };
 		6AE070002465E09F002F7579 /* AccountNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNetwork.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				51D07932242E787600912606 /* HomeViewController.swift */,
-				6AB63FD42461FDFB007442C3 /* AccountCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -325,7 +322,6 @@
 				6A0FDCC1246343EB00CC4834 /* AccountDetailViewController.swift in Sources */,
 				51D07937242E7B1900912606 /* UIColor+Veryable.swift in Sources */,
 				6AB63FD02461FD8E007442C3 /* TableViewDataManager.swift in Sources */,
-				6AB63FD52461FDFB007442C3 /* AccountCell.swift in Sources */,
 				6AE070052465E1FE002F7579 /* HomeView.swift in Sources */,
 				6AB63FD72462053F007442C3 /* Constants.swift in Sources */,
 				6AB63FDD2462976B007442C3 /* VError.swift in Sources */,

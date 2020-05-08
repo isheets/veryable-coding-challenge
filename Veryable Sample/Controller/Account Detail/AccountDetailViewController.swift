@@ -47,16 +47,16 @@ class AccountDetailViewController: BaseViewController {
         }
     }
     
-    @IBAction func done(_ sender: UIButton!) {
+    @objc func done(_ sender: UIButton!) {
         accountDetailView.doneButton.layer.shadowOpacity = 0.6
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func press(_ sender: UIButton!) {
+    @objc func press(_ sender: UIButton!) {
         accountDetailView.doneButton.layer.shadowOpacity = 0
     }
     
-    @IBAction func cancel(_ sender: UIButton!) {
+    @objc func cancel(_ sender: UIButton!) {
         accountDetailView.doneButton.layer.shadowOpacity = 0.6
     }
     

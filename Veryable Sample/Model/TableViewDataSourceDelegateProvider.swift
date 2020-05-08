@@ -32,7 +32,7 @@ class TableViewDataSourceDelegateProvider: NSObject, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.AccountCellId, for: indexPath) as! AccountCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.AccountCellId, for: indexPath) as! AccountCellView
         
         let account = dataManager.accounts[indexPath.row]
         cell.fillData(account: account)
