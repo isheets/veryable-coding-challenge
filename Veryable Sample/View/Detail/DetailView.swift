@@ -28,6 +28,7 @@ class DetailView: UIView {
         descLabel.textColor = UIColor.vryGrey()
         
         imageView.contentMode = .scaleAspectFit
+        imageView.tag = 99
         
         doneButton.setTitle("DONE", for: .normal)
         doneButton.titleLabel?.textColor = UIColor.white

@@ -18,24 +18,28 @@ private struct AccountJSON: Decodable {
 }
 
 class AccountNetwork {
+    weak var delegate: DataModelDelegate?
     
-    var accountData = [Account]()
+    init(delegate: DataModelDelegate) {
+        self.delegate = delegate
+    }
     
     func fetchAccounts() {
         let request = AF.request("https://veryable-public-assets.s3.us-east-2.amazonaws.com/veryable.json")
         
         request.responseDecodable(of: [AccountJSON].self) { (response) in
             guard let allAccounts = response.value else { return }
-            print(allAccounts)
+            
+            var accountData = [Account]()
             for accountJSON in allAccounts {
-                self.accountData.append(Account(id: accountJSON.id,
+                accountData.append(Account(id: accountJSON.id,
                                            account_type: accountJSON.account_type,
                                            account_name: accountJSON.account_name,
                                            desc: accountJSON.desc)
                 
                 )
             }
-            print(self.accountData)
+            self.delegate?.didRecieveDataUpdate(data: accountData)
         }
     }
 }

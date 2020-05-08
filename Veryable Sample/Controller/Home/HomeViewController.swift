@@ -9,24 +9,37 @@
 import UIKit
 import SnapKit
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, DataModelDelegate {
     
-    private var homeView : HomeView!
+    var homeView : HomeView!
+    private var loadingIndicator = UIActivityIndicatorView(style: .large)
     
-    //datasource and delegate form TableView
-    private var tableViewDataManager = TableViewDataManager()
+    private var tableViewDataSourceDelegateProvider: TableViewDataSourceDelegateProvider?
+    private var accountNetwork: AccountNetwork?
     
-    private lazy var tableViewDataSourceDelegateProvider = TableViewDataSourceDelegateProvider(dataManager: tableViewDataManager, navController: self.navigationController)
     
     override func viewDidLoad() {
         
+        accountNetwork = AccountNetwork(delegate: self)
+        accountNetwork?.fetchAccounts()
+        
         homeView = HomeView(frame: CGRect.zero)
-
+        
+        loadingIndicator.startAnimating()
+        loadingIndicator.hidesWhenStopped = true
+        
+        
+        super.viewDidLoad()
+    }
+    
+    func didRecieveDataUpdate(data: [Account]) {
+        loadingIndicator.stopAnimating()
+        
+        tableViewDataSourceDelegateProvider = TableViewDataSourceDelegateProvider(accounts: data, navController: self.navigationController)
         homeView.accountTableView.delegate = tableViewDataSourceDelegateProvider
         homeView.accountTableView.dataSource = tableViewDataSourceDelegateProvider
         homeView.accountTableView.register(AccountCellView.self, forCellReuseIdentifier: Constants.AccountCellId)
-        
-        super.viewDidLoad()
+        homeView.accountTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,11 +55,16 @@ class HomeViewController: BaseViewController {
     override func addSubviews() {
         super.addSubviews()
         self.view.addSubview(homeView)
+        self.view.addSubview(loadingIndicator)
     }
     
     override func makeConstraints() {
         homeView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
+        }
+        
+        loadingIndicator.snp.makeConstraints{ (make) in
+            make.centerWithinMargins.equalTo(self.view)
         }
     }
     

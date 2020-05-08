@@ -10,11 +10,14 @@ import UIKit
 
 class TableViewDataSourceDelegateProvider: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    private let dataManager: TableViewDataManager
     private let navController: UINavigationController?
+    private let accounts: [Account]!
     
-    init(dataManager: TableViewDataManager, navController: UINavigationController?) {
-        self.dataManager = dataManager
+    private var selectedFrame: CGRect?
+    private var selectedAccount: Account?
+    
+    init(accounts: [Account], navController: UINavigationController?) {
+        self.accounts = accounts
         self.navController = navController
         super.init()
     }
@@ -28,20 +31,20 @@ class TableViewDataSourceDelegateProvider: NSObject, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataManager.accounts.count
+        return accounts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.AccountCellId, for: indexPath) as! AccountCellView
         
-        let account = dataManager.accounts[indexPath.row]
+        let account = accounts[indexPath.row]
         cell.fillData(account: account)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedAccount = dataManager.accounts[indexPath.row]
+        let selectedAccount = accounts[indexPath.row]
         
         let detailVC = AccountDetailViewController()
         detailVC.curAccount = selectedAccount
