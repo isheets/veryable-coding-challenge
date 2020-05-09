@@ -14,7 +14,7 @@ class NetworkHelper {
     static let shared = NetworkHelper()
     
     let monitor = NWPathMonitor()
-    var isConnected = false
+    public private(set) var isConnected = false
     
     init() {
         monitor.pathUpdateHandler = { path in
