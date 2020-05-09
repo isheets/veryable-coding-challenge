@@ -16,6 +16,8 @@ class TableViewDataSourceDelegateProvider: NSObject, UITableViewDataSource, UITa
     private var selectedFrame: CGRect?
     private var selectedAccount: Account?
     
+
+    
     init(accounts: [Account], navController: UINavigationController?) {
         self.accounts = accounts
         self.navController = navController
@@ -55,5 +57,4 @@ class TableViewDataSourceDelegateProvider: NSObject, UITableViewDataSource, UITa
     }
     
     
-
 }

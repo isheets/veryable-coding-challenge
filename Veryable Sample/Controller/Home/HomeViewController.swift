@@ -16,7 +16,6 @@ class HomeViewController: BaseViewController, DataModelDelegate {
     private var tableViewDataSourceDelegateProvider: TableViewDataSourceDelegateProvider?
     private var accountNetwork: AccountNetwork?
     
-    
     override func viewDidLoad() {
         homeView = HomeView(frame: CGRect.zero)
         
@@ -85,4 +84,29 @@ class HomeViewController: BaseViewController, DataModelDelegate {
         super.makeConstraints()
     }
     
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        if operation == .push {
+            
+            guard
+                let selectedIndexPathCell = homeView.accountTableView.indexPathForSelectedRow,
+                let selectedCell = homeView.accountTableView.cellForRow(at: selectedIndexPathCell)
+                as? AccountCellView
+              else {
+                return nil
+            }
+            
+            let selectedCellImage = selectedCell.accountImageView
+
+            transition.imageOriginFrame = selectedCell.background.convert(selectedCellImage.frame, to: nil)
+            transition.transitionImage = selectedCellImage.image ?? UIImage()
+            
+            transition.presenting = true
+            return transition
+        }
+        else {
+            transition.presenting = false
+            return transition
+        }
+    }
 }

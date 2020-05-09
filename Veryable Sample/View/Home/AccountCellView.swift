@@ -10,9 +10,9 @@ import UIKit
 
 class AccountCellView: UITableViewCell {
     
-    private let background = UIView()
+    let background = UIView()
     private let textStackView = UIStackView()
-    private let accountImageView = UIImageView()
+    let accountImageView = UIImageView()
     private let accountNameLabel = UILabel()
     private let accountDescLabel = UILabel()
     private let accountTypeLabel = UILabel()

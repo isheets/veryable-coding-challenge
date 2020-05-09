@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navController.navigationBar.titleTextAttributes = [.font: UIFont.vryAvenirNextRegular(20)!,
                                                            .foregroundColor: UIColor.vryGreyDark()]
         navController.navigationBar.tintColor = UIColor.vryGreyDark()
+        navController.delegate = homeViewController
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navController
