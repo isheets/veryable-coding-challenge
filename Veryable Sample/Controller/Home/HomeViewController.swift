@@ -12,12 +12,14 @@ import SnapKit
 class HomeViewController: BaseViewController, DataModelDelegate {
     
     var homeView : HomeView!
+    var transition = PushAnimator()
 
     private var tableViewDataSourceDelegateProvider: TableViewDataSourceDelegateProvider?
     private var accountNetwork: AccountNetwork?
     
     override func viewDidLoad() {
         homeView = HomeView(frame: CGRect.zero)
+        self.navigationController?.delegate = self
         
         //use delegate pattern to recieve results of server data
         accountNetwork = AccountNetwork(delegate: self)
@@ -83,6 +85,8 @@ class HomeViewController: BaseViewController, DataModelDelegate {
         }
         super.makeConstraints()
     }
+}
+extension HomeViewController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
@@ -105,8 +109,7 @@ class HomeViewController: BaseViewController, DataModelDelegate {
             return transition
         }
         else {
-            transition.presenting = false
-            return transition
+            return nil
         }
     }
 }

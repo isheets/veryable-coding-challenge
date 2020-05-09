@@ -8,10 +8,9 @@
 
 import UIKit
 
-class BaseViewController: UIViewController, ViewProtocol, ViewControllerProtocol, UINavigationControllerDelegate {
+class BaseViewController: UIViewController, ViewProtocol, ViewControllerProtocol {
     
     var appDel = UIApplication.shared.delegate as! AppDelegate
-    var transition = PopAnimator.singleton
     
     override func viewDidLoad() {
         super.viewDidLoad()

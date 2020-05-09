@@ -8,10 +8,9 @@
 
 import UIKit
 
-class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    static let singleton = PopAnimator()
+class PushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration = 1.0
+    let duration = 0.3
     var presenting = true
     var imageOriginFrame = CGRect.zero
     var transitionImage = UIImage()
