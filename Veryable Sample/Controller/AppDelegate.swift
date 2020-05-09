@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         homeViewController.modalTransitionStyle = .crossDissolve
         
         let navController = UINavigationController(rootViewController: homeViewController)
+        //configure nav bar style globally
         navController.navigationBar.titleTextAttributes = [.font: UIFont.vryAvenirNextRegular(20)!,
                                                            .foregroundColor: UIColor.vryGreyDark()]
         navController.navigationBar.tintColor = UIColor.vryGreyDark()
@@ -33,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()
         
-       
         return true
     }
     

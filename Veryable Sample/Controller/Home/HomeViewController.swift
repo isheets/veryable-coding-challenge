@@ -12,8 +12,7 @@ import SnapKit
 class HomeViewController: BaseViewController, DataModelDelegate {
     
     var homeView : HomeView!
-    
-    
+
     private var tableViewDataSourceDelegateProvider: TableViewDataSourceDelegateProvider?
     private var accountNetwork: AccountNetwork?
     
@@ -21,12 +20,14 @@ class HomeViewController: BaseViewController, DataModelDelegate {
     override func viewDidLoad() {
         homeView = HomeView(frame: CGRect.zero)
         
+        //use delegate pattern to recieve results of server data
         accountNetwork = AccountNetwork(delegate: self)
         fetchData()
         
         super.viewDidLoad()
     }
     
+    //try to load the data via the network
     override func fetchData() {
         do {
             try accountNetwork?.fetchAccounts()
@@ -36,6 +37,7 @@ class HomeViewController: BaseViewController, DataModelDelegate {
         }
     }
     
+    //something went wrong getting or parsing the data, alert user with options
     func failedDataUpdate() {
         let alert = UIAlertController(title: "Could not load accounts", message: nil, preferredStyle: .alert)
         
@@ -50,6 +52,7 @@ class HomeViewController: BaseViewController, DataModelDelegate {
         self.present(alert, animated: true)
     }
     
+    //successful data fetching! set delegate and data source to display results in UITableView
     func didRecieveDataUpdate(data: [Account]) {
         homeView.loadingIndicator.stopAnimating()
         
@@ -79,6 +82,7 @@ class HomeViewController: BaseViewController, DataModelDelegate {
         homeView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
+        super.makeConstraints()
     }
     
 }
