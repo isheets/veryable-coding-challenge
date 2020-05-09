@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class DetailView: UIView {
     
@@ -66,18 +67,22 @@ class DetailView: UIView {
         if(setupConstraints) {
             let viewMargins = self.layoutMarginsGuide
             
-            imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
-            imageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-            imageView.topAnchor.constraint(equalTo: viewMargins.topAnchor, constant: 16).isActive = true
-            imageView.centerXAnchor.constraint(equalTo: viewMargins.centerXAnchor).isActive = true
+            imageView.snp.makeConstraints{(make) in
+                make.size.equalTo(80)
+                make.top.equalTo(viewMargins.snp.top).offset(16)
+                make.centerX.equalTo(self.snp.centerX)
+            }
             
-            stackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
-            stackView.centerXAnchor.constraint(equalTo: viewMargins.centerXAnchor).isActive = true
+            stackView.snp.makeConstraints{(make) in
+                make.top.equalTo(imageView.snp.bottom).offset(16)
+                make.centerX.equalTo(self.snp.centerX)
+            }
             
-            doneButton.bottomAnchor.constraint(equalTo: viewMargins.bottomAnchor, constant: -8).isActive = true
-            doneButton.trailingAnchor.constraint(equalTo: viewMargins.trailingAnchor, constant: -8).isActive = true
-            doneButton.leadingAnchor.constraint(equalTo: viewMargins.leadingAnchor, constant: 8).isActive = true
-        
+            doneButton.snp.makeConstraints{(make) in
+                make.bottom.equalTo(viewMargins.snp.bottom).offset(-8)
+                make.leading.equalTo(viewMargins.snp.leading).offset(8)
+                make.trailing.equalTo(viewMargins.snp.trailing).offset(-8)
+            }
             setupConstraints = false
         }
 

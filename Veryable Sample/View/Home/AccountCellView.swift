@@ -101,27 +101,34 @@ class AccountCellView: UITableViewCell {
     func constrainViews() {
         //set constraints for background
         let cellMargins = contentView.layoutMarginsGuide
-        background.leadingAnchor.constraint(equalTo: cellMargins.leadingAnchor, constant:  4).isActive = true
-        background.trailingAnchor.constraint(equalTo: cellMargins.trailingAnchor, constant: -4).isActive = true
-        background.topAnchor.constraint(equalTo: cellMargins.topAnchor, constant: -8).isActive = true
-        background.bottomAnchor.constraint(equalTo: cellMargins.bottomAnchor).isActive = true
-        
         //constraints for views
         let backgroundMargins = background.layoutMarginsGuide
         
-        textStackView.leadingAnchor.constraint(equalTo: accountImageView.trailingAnchor, constant: 12).isActive = true
-        textStackView.trailingAnchor.constraint(equalTo: arrowImageView.leadingAnchor, constant: -8).isActive = true
-        textStackView.topAnchor.constraint(equalTo: backgroundMargins.topAnchor, constant: 8).isActive = true
-        textStackView.bottomAnchor.constraint(equalTo: backgroundMargins.bottomAnchor, constant: -8).isActive = true
+        background.snp.makeConstraints{(make) in
+            make.leading.equalTo(cellMargins.snp.leading).offset(4)
+            make.trailing.equalTo(cellMargins.snp.trailing).offset(-4)
+            make.top.equalTo(cellMargins.snp.top).offset(-8)
+            make.bottom.equalTo(cellMargins.snp.bottom)
+        }
         
-        accountImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        accountImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        accountImageView.leadingAnchor.constraint(equalTo: backgroundMargins.leadingAnchor, constant: 8).isActive = true
-        accountImageView.topAnchor.constraint(equalTo: backgroundMargins.topAnchor, constant: 10).isActive = true
+        textStackView.snp.makeConstraints{(make) in
+            make.leading.equalTo(accountImageView.snp.trailing).offset(12)
+            make.trailing.equalTo(arrowImageView.snp.leading).offset(-8)
+            make.top.equalTo(backgroundMargins.snp.top).offset(8)
+            make.bottom.equalTo(backgroundMargins.snp.bottom).offset(-8)
+        }
         
-        arrowImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        arrowImageView.trailingAnchor.constraint(equalTo: backgroundMargins.trailingAnchor).isActive = true
-        arrowImageView.centerYAnchor.constraint(equalTo: backgroundMargins.centerYAnchor).isActive = true
+        accountImageView.snp.makeConstraints{(make) in
+            make.size.equalTo(20)
+            make.leading.equalTo(backgroundMargins.snp.leading).offset(8)
+            make.top.equalTo(backgroundMargins.snp.top).offset(10)
+        }
+        
+        arrowImageView.snp.makeConstraints{(make) in
+            make.width.equalTo(20)
+            make.centerY.equalTo(backgroundMargins.snp.centerY)
+            make.trailing.equalTo(backgroundMargins.snp.trailing)
+        }
     }
     
     //set the content for the cell's data views given an Account
